@@ -7,10 +7,14 @@ const posts = require("./routes/posts");
 const userData = require("./data/users")
 const postData = require("./data/posts")
 
+//const comments = require("./routes/comments")
+
 const error = require("./utilities/error");
 
 const app = express();
 const port = 3000;
+
+const comments = []
 
 // Parsing Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -140,6 +144,13 @@ app.get("/api/posts", (req, res) => {
     res.json(userPosts)
   }
 })
+// GET /comments
+//app.use("/comments",)
+//const comments = [];
+app.get("/comments", (req, res) => {
+  res.json(comments)
+})
+
 
 // 404 Middleware
 app.use((req, res, next) => {
